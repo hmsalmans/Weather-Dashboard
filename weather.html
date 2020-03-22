@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="weather.css">
+    <title>Weather Dashboard</title>
+    
+</head>
+
+<body>
+    <form >
+        <label for="city">Desired City</label><br>
+        <input type="text" id ="city" placeholder="Type the city name" ><br><br>
+        <input type="submit" class="btn btn-success">
+    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                This is going to be history
+                </div>
+                <div class="row" id="history">
+
+                </div> 
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <p>This  one is the current day</p>
+                    <div class="weather-container">
+                        <img class="icon">
+                        <p class="weather"></p>
+                        <p class="temp"></p>
+                        <p class="humid"></p>
+                    </div>
+                </div>    
+                <div class="row"> 
+                    <p> &nbsp; This will have 5 day data</p> 
+                </div>
+                <div class="row">    
+                        <div class="col-md-2">
+                            <p>Day1</p>
+                            <div class="weather-container">
+                                <img class="icon">
+                                <p class="weather"></p>
+                                <p class="temp"></p>
+                                <p class="humid"></p>
+                            </div> 
+                        </div>       
+                        <div class="col-md-2">
+                            <p>Day2</p>
+                            <div class="weather-container">
+                                <img class="icon">
+                                <p class="weather"></p>
+                                <p class="temp"></p>
+                                <p class="humid"></p>
+                            </div> 
+                        </div>       
+                        <div class="col-md-2">
+                            <p>Day3</p>
+                            <div class="weather-container">
+                                <img class="icon">
+                                <p class="weather"></p>
+                                <p class="temp"></p>
+                                <p class="humid"></p>
+                            </div> 
+                        </div>       
+                        <div class="col-md-2">
+                            <p>Day4</p>
+                            <div class="weather-container">
+                                <img class="icon">
+                                <p class="weather"></p>
+                                <p class="temp"></p>
+                                <p class="humid"></p>
+                            </div> 
+                        </div>       
+                        <div class="col-md-2">
+                            <p>Day5</p>
+                            <div class="weather-container">
+                                <img class="icon">
+                                <p class="weather"></p>
+                                <p class="temp"></p>
+                                <p class="humid"></p>
+                            </div> 
+                        </div>       
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+
+
+    <script type="text/javascript">
+    
+
+    $(".btn-success").on("click", function() {
+   
+    
+    
+    var city = $("#city").val();
+
+    var  queryUrl =  "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=11a5b7da9acdf60ccfba2ff6df117469";
+
+
+    
+
+     $.ajax({
+      url: queryUrl,
+      method: "GET"
+    })
+    
+      // We store all of the retrieved data inside of an object called "response"
+      .then(function(response) {
+
+        // Log the queryURL
+        console.log(queryURL);
+
+        // Log the resulting object
+        console.log(response);
+      
+    });
+    
+    });
+
+    </script>
+</body>
+</html>
