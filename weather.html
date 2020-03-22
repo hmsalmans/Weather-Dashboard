@@ -23,7 +23,6 @@
                 This is going to be history
                 </div>
                 <div class="row" id="history">
-
                 </div> 
             </div>
             <div class="col-md-8">
@@ -118,10 +117,16 @@
       .then(function(response) {
 
         // Log the queryURL
-    
+        $(".temp").text(response.main.temp);
 
         // Log the resulting object
         console.log(response);
+
+        
+
+
+
+
       
     });
     
