@@ -97,6 +97,8 @@
     
 
     $(".btn-success").on("click", function() {
+        event.preventDefault();
+
    
     
     
@@ -116,7 +118,7 @@
       .then(function(response) {
 
         // Log the queryURL
-        console.log(queryURL);
+    
 
         // Log the resulting object
         console.log(response);

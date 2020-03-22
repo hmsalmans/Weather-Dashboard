@@ -10,8 +10,8 @@ body {
     text-align: center;
     border-radius: 20px;
     margin: 20px;
-    border: solid;
-    border-color: rgb(30, 223, 88);
+    border: dotted;
+    border-color: rgb(30, 130, 223);
     width: 120px;
     height: 200px;
 }
