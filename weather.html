@@ -27,12 +27,13 @@
             </div>
             <div class="col-md-8">
                 <div class="row">
-                    <p>This  one is the current day</p>
+                    <p>The current weather date of&nbsp;<span class="city-name"></span> </p>
                     <div class="weather-container">
+                        <p class=""></p>
                         <img class="icon">
                         <p class="weather"></p>
-                        <p class="temp"></p>
-                        <p class="humid"></p>
+                        <p>Temp:&nbsp;<span class="temp"></span><span>&deg;F</span></p>
+                        <p>Humidity:&nbsp;<span class="humid"></span></p>
                     </div>
                 </div>    
                 <div class="row"> 
@@ -118,6 +119,8 @@
 
         // Log the queryURL
         $(".temp").text(response.main.temp);
+        $(".humid").text(response.main.humidity + "%");
+        $(".city-name").html(response.name);
 
         // Log the resulting object
         console.log(response);

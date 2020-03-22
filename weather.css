@@ -7,11 +7,12 @@ body {
     background-color: aqua;
 }
 .weather-container {
+    background-color: palegoldenrod;
     text-align: center;
     border-radius: 20px;
     margin: 20px;
     border: dotted;
-    border-color: rgb(30, 130, 223);
+    border-color: rgb(53, 223, 30);
     width: 120px;
     height: 200px;
 }
@@ -20,13 +21,21 @@ body {
     text-align: center;
     border-radius: 20px;
     border: solid;
-    border-color: rgb(30, 223, 88);
+    border-color: rgb(223, 139, 30);
     height: 500px;
     width: 300px;
 }
 .col-md-8 {
     margin-top: 20px;
+    color: rgb(202, 23, 238);
 }
 .col-md-4 {
     margin-top: 20px;
+}
+span {
+    color: red;
+}
+.city-name {
+    color: rgba(255, 166, 0, 0.932);
+    margin-top: 10px;
 }
