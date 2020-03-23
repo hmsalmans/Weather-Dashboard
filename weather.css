@@ -37,5 +37,7 @@ span {
 }
 .city-name {
     color: rgba(255, 166, 0, 0.932);
+}
+.date {
     margin-top: 10px;
 }

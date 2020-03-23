@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    
     <link rel="stylesheet" type="text/css" href="weather.css">
     <title>Weather Dashboard</title>
     
@@ -29,9 +32,8 @@
                 <div class="row">
                     <p>The current weather date of&nbsp;<span class="city-name"></span> </p>
                     <div class="weather-container">
-                        <p class=""></p>
+                        <p class="date"></p>
                         <img class="icon">
-                        <p class="weather"></p>
                         <p>Temp:&nbsp;<span class="temp"></span><span>&deg;F</span></p>
                         <p>Humidity:&nbsp;<span class="humid"></span></p>
                     </div>
@@ -118,6 +120,8 @@
       .then(function(response) {
 
         // Log the queryURL
+        var currentDay = moment().format("dddd, MMMM Do");
+        $(".date").text(currentDay);
         $(".temp").text(response.main.temp);
         $(".humid").text(response.main.humidity + "%");
         $(".city-name").html(response.name);
