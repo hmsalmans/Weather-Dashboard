@@ -34,8 +34,11 @@
                     <div class="weather-container">
                         <p class="date"></p>
                         <img class="icon">
+
                         <p>Temp:&nbsp;<span class="temp"></span><span>&deg;F</span></p>
+                        <p>Wind:&nbsp;<span class="wind"></span><span>km/h</span></p>
                         <p>Humidity:&nbsp;<span class="humid"></span></p>
+                        <p class="index"></p>
                     </div>
                 </div>    
                 <div class="row"> 
@@ -103,7 +106,7 @@
 
    
     
-    
+        
     var city = $("#city").val();
 
     var  queryUrl =  "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=11a5b7da9acdf60ccfba2ff6df117469";
@@ -124,11 +127,54 @@
         $(".date").text(currentDay);
         $(".temp").text(response.main.temp);
         $(".humid").text(response.main.humidity + "%");
-        $(".city-name").html(response.name);
+        $(".city-name").text(response.name);
+        $(".wind").text(response.wind.speed);
+
+
+
+        //uv index
+        var uvIndex = "http://api.openweathermap.org/data/2.5/uvi?appid=11a5b7da9acdf60ccfba2ff6df117469&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
+        
+
+        $.ajax({
+      url: uvIndex,
+      method: "GET"
+    })
+    
+      // response from uvIndex
+      .then(function(uvResponse) {
+        
+        var index = uvResponse.value;
+        var bgcolor;
+    
+        if (index<=3) {
+            bgcolor = "green";
+        }
+        else if (index>=3 || index<=6) {
+            bgcolor = "yellow";
+
+        }
+        else if (index>=6 || index<=8) {
+            bgcolor = "orange";
+
+        }
+        else {
+            bgcolor = "red";
+
+        };
+        
+        
+        $(".index").attr("style", "background-color:" + bgcolor).text(index);
+        
+        
+      });  
+
+
+      
 
         // Log the resulting object
         console.log(response);
-
+        console.log(uvIndex);
         
 
 
