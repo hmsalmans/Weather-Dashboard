@@ -14,11 +14,19 @@
 </head>
 
 <body>
-    <form >
-        <label for="city">Desired City</label><br>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <h1 class=" navbar navbar-brand">Weather Dashboard</h1>
+        </nav>
+    </header>
+  
+  
+    <form id="form1">
+        <label for="city"><strong>Desired City</strong></label><br>
         <input type="text" id ="city" placeholder="Type the city name" ><br><br>
         <input type="submit" class="btn btn-success">
     </form>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -29,17 +37,31 @@
                 </div> 
             </div>
             <div class="col-md-8">
-                <div class="row">
-                    <p>The current weather date of&nbsp;<span class="city-name"></span> </p>
-                    <div class="weather-container">
-                        <p class="date"></p>
-                        <img class="icon">
+                
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form id="form2">
+                                <label for="new"><strong>New City Search</strong></label><br>
+                                <input type="text" id ="new" placeholder="Type the new search" ><br><br>
+                                <input type="submit" class="btn btn-success">
+                            </form>
+                        </div>
+                        <div class="col-md-9">    
+                            <div class="row">
+                                <h2><span class="city-name"></span> </h2>
+                            </div>
+                            <div class="row">
+                                <div class="weather-container0">
+                                    <h3 class="date"></h3>
+                                    <p class="icon"><span id="cond"></span></p>
 
-                        <p>Temp:&nbsp;<span class="temp"></span><span>&deg;F</span></p>
-                        <p>Wind:&nbsp;<span class="wind"></span><span>km/h</span></p>
-                        <p>Humidity:&nbsp;<span class="humid"></span></p>
-                        <p class="index"></p>
-                    </div>
+                                    <p>Temp:&nbsp;<span class="temp"></span><span>&deg;F</span></p>
+                                    <p>Wind:&nbsp;<span class="wind"></span><span>mph</span></p>
+                                    <p>Humidity:&nbsp;<span class="humid"></span></p>
+                                    <p class="index"></p>
+                                </div>
+                            </div>  
+                        </div>    
                 </div>    
                 <div class="row"> 
                     <p> &nbsp; This will have 5 day data</p> 
@@ -99,10 +121,15 @@
 
 
     <script type="text/javascript">
-    
+    $(document).ready();
+    $(".container").hide();
+    $("#form2").hide();
 
     $(".btn-success").on("click", function() {
         event.preventDefault();
+        $(".container").show();
+        $("#form1").hide();
+        $("#form2").show();
 
    
     
@@ -132,6 +159,42 @@
 
 
 
+
+                // Display weather icon
+
+                var iconcodeCurrent = response.weather[0].icon
+                console.log(iconcodeCurrent);
+
+                var iconurlCurrent = "http://openweathermap.org/img/w/" + iconcodeCurrent + ".png";
+
+                $(".icon").append('<img src="' + iconurlCurrent + '" />');
+                $("#cond").text(response.weather[0].main)
+
+
+        
+
+
+        /*
+        var iconurl = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+    
+
+
+        $.ajax({
+      url: iconurl,
+      method: "GET"
+    })
+    
+      // response from icon
+      .then(function(iconResponse) {
+        
+        var icons = iconResponse.value;
+        
+        $(".icon").text(icons);
+
+
+
+      }); */
+
         //uv index
         var uvIndex = "http://api.openweathermap.org/data/2.5/uvi?appid=11a5b7da9acdf60ccfba2ff6df117469&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
         
@@ -147,24 +210,30 @@
         var index = uvResponse.value;
         var bgcolor;
     
-        if (index<=3) {
-            bgcolor = "green";
+        
+        
+        
+        $(".index").text(index);
+
+        if (index<3) {
+            $(".index").attr("style", "background-color:green")
         }
-        else if (index>=3 || index<=6) {
-            bgcolor = "yellow";
+        else if (index>=3 || index<6) {
+            $(".index").attr("style", "background-color:yellow")
 
         }
-        else if (index>=6 || index<=8) {
-            bgcolor = "orange";
+        else if (index>=6 || index<8) {
+            $(".index").attr("style", "background-color:orange")
 
         }
         else {
-            bgcolor = "red";
+            $(".index").attr("style", "background-color:red")
 
-        };
+        }
+
+            
+
         
-        
-        $(".index").attr("style", "background-color:" + bgcolor).text(index);
         
         
       });  
@@ -176,14 +245,23 @@
         console.log(response);
         console.log(uvIndex);
         
-
+        var fiveDay = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=11a5b7da9acdf60ccfba2ff6df117469";
 
 
 
       
     });
+
     
     });
+    
+    
+
+
+
+
+
+
 
     </script>
 </body>

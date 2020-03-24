@@ -1,13 +1,13 @@
 form {
-    margin-top: 20px;
+    margin-top: 150px;
     text-align: center;
-    color:rgb(228, 114, 15);
+    color:rgb(15, 228, 228);
 }
 body {
-    background-color: aqua;
+    background-color:grey;
 }
 .weather-container {
-    background-color: palegoldenrod;
+    background-color: #f7ffe0;
     text-align: center;
     border-radius: 20px;
     margin: 20px;
@@ -21,30 +21,60 @@ body {
     text-align: center;
     border-radius: 20px;
     border: solid;
-    border-color: rgb(223, 139, 30);
+    border-color: rgb(30, 162, 223);
     height: 500px;
     width: 300px;
 }
 .col-md-8 {
+    margin-top: 10px;
     
-    color: rgb(23, 37, 238);
+    color: rgb(30, 162, 223);
 }
 .col-md-4 {
     margin-top: 20px;
 }
 span {
-    color:green;
+    color:#9f7e69;
 }
 .city-name {
-    color: rgba(255, 81, 0, 0.932);
+    color: rgba(0, 238, 255, 0.932);
     text-transform: uppercase;
     text-overflow: ellipsis;
+    margin-right: 10px;
+    text-align: right;
+    font-family: 'Times New Roman', Times, serif;
 }
 .date {
     margin-top: 10px;
-    color: green;
+    color: #9f7e69;
 }
 .index {
-   margin: 20px;
+   margin-left: 170px;
+   margin-right: 170px;
    border-radius: 50% ;
+}
+#form2 {
+    margin-top: 150px;
+    margin-left: -30px;
+}
+h1 {
+    font-family: fantasy;
+    text-align: center;
+    margin-top: 40px;
+    color:grey;
+}
+.weather-container0 {
+
+    background-color:#f7ffe0;
+    text-align: center;
+    border-radius: 10px;
+    border: dotted;
+    border-color: rgb(30, 168, 223);
+    width: 420px;
+    height: 300px;
+
+}
+.col-md-3 {
+    margin-top: -80px;
+    margin-left: -20px;
 }
