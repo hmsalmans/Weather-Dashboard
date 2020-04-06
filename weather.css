@@ -7,14 +7,16 @@ body {
     background-color:grey;
 }
 .weather-container {
-    background-color: #f7ffe0;
+    background-color: rgb(119, 178, 255);
     text-align: center;
     border-radius: 20px;
     margin: 20px;
-    border: dotted;
+    padding-top: 20px;
+    border: solid;
     border-color: rgb(53, 223, 30);
-    width: 120px;
-    height: 250px;
+    width: 125px;
+    height: 200px;
+    color: #9f7e69;
 }
 #history{
     margin-top: 40px;
@@ -28,7 +30,7 @@ body {
 .col-md-8 {
     margin-top: 10px;
     
-    color: rgb(30, 162, 223);
+    color: rgb(30, 223, 223);
 }
 .col-md-4 {
     margin-top: 20px;
@@ -68,7 +70,7 @@ h1 {
     background-color:#f7ffe0;
     text-align: center;
     border-radius: 10px;
-    border: dotted;
+    border: solid;
     border-color: rgb(30, 168, 223);
     width: 420px;
     height: 300px;
@@ -77,4 +79,16 @@ h1 {
 .col-md-3 {
     margin-top: -80px;
     margin-left: -20px;
+}
+#row5 {
+    color: aqua;
+
+}
+.tata {
+    color:rgb(30, 107, 223);
+    font-family: fantasy;
+}
+h3 {
+    margin-top: 20px;
+    font-family: fantasy;
 }

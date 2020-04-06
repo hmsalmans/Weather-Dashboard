@@ -25,8 +25,8 @@
 
     <form id="form1">
         <label for="city"><strong>Desired City</strong></label><br>
-        <input type="text" id="city" placeholder="Type the city name"><br><br>
-        <input type="submit" class="btn btn-success">
+        <input type="text" class="city" placeholder="Type the city name"><br><br>
+        <input type="submit" class="btn btn-success" id="first">
     </form>
 
     <div class="container">
@@ -44,8 +44,8 @@
                     <div class="col-md-3">
                         <form id="form2">
                             <label for="new"><strong>New City Search</strong></label><br>
-                            <input type="text" id="new" placeholder="Type the new search"><br><br>
-                            <input type="submit" class="btn btn-success">
+                            <input type="text" class="city" id="new" placeholder="Type the new search"><br><br>
+                            <input type="submit" class="btn btn-success" id="second">
                         </form>
                     </div>
                     <div class="col-md-9">
@@ -56,25 +56,18 @@
                             <div class="weather-container0">
                                 <h3 class="date"></h3>
                                 <p class="icon"><span id="cond"></span></p>
-
-                                <p>Temp:&nbsp;<span class="temp"></span><span>&deg;F</span></p>
-                                <p>Wind:&nbsp;<span class="wind"></span><span>mph</span></p>
-                                <p>Humidity:&nbsp;<span class="humid"></span></p>
+                                    <p>Temp:&nbsp;<span class="temp"></span><span>&deg;F</span></p>
+                                    <p>Wind:&nbsp;<span class="wind"></span><span>mph</span></p>
+                                    <p>Humidity:&nbsp;<span class="humid"></span></p>
                                 <p class="index"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                    <p> &nbsp; This will have 5 day data</p>
-                    <div class="row" id='row5'></div>
+                    <h3> <u>Future Weather</u></h3>
+                    <div class="row" id="row5"></div>
                 </div>
-                <div class="row">
-                    
-                    
-                    
-                    
-                    
+                <div class="row">   
                 </div>
             </div>
         </div>
@@ -84,11 +77,13 @@
 
 
     <script type="text/javascript">
+    
         $(document).ready();
         $(".container").hide();
         $("#form2").hide();
+        
 
-        $(".btn-success").on("click", function () {
+        $("#first").on("click", function search() {
             event.preventDefault();
             $(".container").show();
             $("#form1").hide();
@@ -97,7 +92,7 @@
 
 
 
-            var city = $("#city").val();
+            var city = $(".city").val();
 
             var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=11a5b7da9acdf60ccfba2ff6df117469";
 
@@ -137,28 +132,6 @@
 
 
 
-                    /*
-                    var iconurl = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
-                
-            
-            
-                    $.ajax({
-                  url: iconurl,
-                  method: "GET"
-                })
-                
-                  // response from icon
-                  .then(function(iconResponse) {
-                    
-                    var icons = iconResponse.value;
-                    
-                    $(".icon").text(icons);
-            
-            
-            
-                  }); */
-
-                    //uv index
                     var uvIndex = "http://api.openweathermap.org/data/2.5/uvi?appid=11a5b7da9acdf60ccfba2ff6df117469&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
 
 
@@ -204,14 +177,6 @@
 
 
 
-                    /*/ Log the resulting object
-                    console.log(response);
-                    console.log(uvIndex);
-                    
-                    var fiveDay = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=11a5b7da9acdf60ccfba2ff6df117469";
-            
-            */
-
 
 
 
@@ -233,46 +198,47 @@
                     console.log(response)
 
                     // Log the queryURL
-                    for (i = 0; i < 40; i = i+8) {
+                    for (i = 7; i < 40; i = i+8) {
                        
                         var colm_2_div = $("<div class='col-md-2'>");
-                        let current_date = i + 8;
-                        $(colm_2_div).append("<p>Day" + current_date +"</p>");
+                        let current_date = response.list[i].dt_txt.slice(0,10);
+                        $(colm_2_div).append("<p>" + current_date + "</p>");
                         var weather_div = $("<div class='weather-container'>");
-                            var temp = response.list[i].main.temp;
-                            
-                            $(weather_div).append(" <p class='temp'>" + temp + "</p>");
+                            var temp1 = response.list[i].main.temp;
+                            var wind1 = response.list[i].wind.speed;
+                            var humid1 = response.list[i].main.humidity;
+
+                            var iconCodeFuture = response.list[i].weather[0].icon
+                            var iconUrlFuture = "http://openweathermap.org/img/wn/" + iconCodeFuture + ".png";
+
+                            $(weather_div).append('<img src="' + iconUrlFuture + '" />');
+                            $(weather_div).append(" <p><span class='tata'> Temp:</span> " + temp1 + " &deg;F</p>");
+                            $(weather_div).append(" <p><span class='tata'> Wind:</span> " + wind1 + " mph</p>");
+                            $(weather_div).append(" <p><span class='tata'> Humidity:</span> " + humid1 + " %</p>");
                             $(colm_2_div).append(weather_div);
-                            $('#row5').append(colm_2_div);
+                            
+                            $("#row5").append(colm_2_div);
                             
 
-                    //         <div class="col-md-2">
-                    //     <p>Day5</p>
-                    //     <div class="weather-container">
-                    //         <img class="icon">
-                    //         <p class="weather"></p>
-                    //         <p class="temp"></p>
-                    //         <p class="humid"></p>
-                    //     </div>
-                    // </div>
                            
                         
-                   
+                           
                         
                         
 
-                        //$(".temp1").text(response.main.temp);
+                        
                     };
 
                    
 
-                    console.log(response);
+                
                 });
 
 
 
 
 
+                
 
 
 
@@ -281,7 +247,15 @@
 
 
 
+ // $("#second").on("click", search());
 
+
+
+
+
+
+        
+    
 
 
 
