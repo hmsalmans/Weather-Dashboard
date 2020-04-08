@@ -81,12 +81,13 @@
 
     <script type="text/javascript">
     
-        $(document).ready();
+        $(document).ready(function(){
         $(".container").hide();
         $("#form2").hide();
         
 
-        var store = JSON.parse(localStorage.getItem("cityName")) || [];                
+        var store = localStorage.getItem("cityName") || [];  
+                      
 
         $("#first").on("click", function search() {
             event.preventDefault();
@@ -104,12 +105,14 @@
             var city = $(".city").val().trim();
             
 
+
+
                   
 
             //Local storage and history
 
             var Caps = city.toUpperCase();
-            localStorage.setItem("cityNmae", Caps);
+            localStorage.setItem("cityName", Caps);
             var buttton = $("#historydata").prepend("<button>" + Caps + "</button>");
             var atrr = buttton.attr("class", "color: green;");
 
@@ -292,7 +295,7 @@
 
         });
 
-
+    });
 
  // $("#second").on("click", search());
 
