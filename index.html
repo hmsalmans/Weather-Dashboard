@@ -35,7 +35,10 @@
                 <div class="row">
                     This is going to be history
                 </div>
-                <div class="row" id="history">
+                <div class="row history">
+                    <div id="historydata">
+
+                    </div>
                 </div>
             </div>
             <div class="col-md-8">
@@ -83,6 +86,8 @@
         $("#form2").hide();
         
 
+        var store = JSON.parse(localStorage.getItem("cityName")) || [];                
+
         $("#first").on("click", function search() {
             event.preventDefault();
             $(".container").show();
@@ -92,11 +97,35 @@
 
 
 
-            var city = $(".city").val();
+
+
+
+
+            var city = $(".city").val().trim();
+            
+
+                  
+
+            //Local storage and history
+
+            var Caps = city.toUpperCase();
+            localStorage.setItem("cityNmae", Caps);
+            var buttton = $("#historydata").prepend("<button>" + Caps + "</button>");
+            var atrr = buttton.attr("class", "color: green;");
+
+            
+
+
+
+
+
+
+
+
+
+
 
             var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=11a5b7da9acdf60ccfba2ff6df117469";
-
-
 
 
             $.ajax({
@@ -182,6 +211,24 @@
 
 
                 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             var fiveDay = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=11a5b7da9acdf60ccfba2ff6df117469";
