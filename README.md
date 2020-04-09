@@ -33,9 +33,6 @@
 
 
 # Demo 
-![](/app-demo-weather.pdf?raw=true "Weather Data Application")
-
-
-![](/demo.png?raw=true "Weather Data Application")
+![Weather-Data App](/demo.png?raw=true "Weather Data Application")
 
 
