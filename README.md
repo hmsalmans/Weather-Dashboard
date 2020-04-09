@@ -33,6 +33,6 @@
 
 
 # Demo 
-     *![](app-demo-weather.pdf?raw=true "Weather Data Application")
+     ![](app-demo-weather.pdf?raw=true "Weather Data Application")
 
 
