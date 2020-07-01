@@ -1,4 +1,4 @@
-# Weather-Dashboard-HW6
+# Weather-Dashboard
 This is the weather dashboard which shows weather data.
 
 # Requirements:
@@ -21,5 +21,7 @@ This is the weather dashboard which shows weather data.
     * Recent searches are stored and upon clicking them, the data for that specific city is received.                                            
 # Demo 
 ![Weather-Data App](/demo.png?raw=true "Weather Data Application")
+# Deployed 
+*https://hmsalmans.github.io/Weather-Dashboard/
 
 
